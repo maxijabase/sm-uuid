@@ -18,7 +18,7 @@ public Plugin myinfo =
     author = "ampere",
     description = "Tests the UUID generation functionality",
     version = "1.0",
-    url = "https://yourwebsite.com"
+    url = "https://github.com/maxijabase"
 };
 
 public void OnPluginStart()
