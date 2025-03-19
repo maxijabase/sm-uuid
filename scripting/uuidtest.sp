@@ -23,32 +23,13 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-    // Register commands
     RegAdminCmd("sm_testuuid", Command_TestUUID, ADMFLAG_ROOT, "Tests UUID generation");
     RegAdminCmd("sm_getuuid", Command_GetUUID, ADMFLAG_ROOT, "Generates and prints a UUID");
     RegAdminCmd("sm_validateuuid", Command_ValidateUUID, ADMFLAG_ROOT, "Validates a UUID");
     RegAdminCmd("sm_benchmarkuuid", Command_BenchmarkUUID, ADMFLAG_ROOT, "Benchmarks UUID generation");
     RegAdminCmd("sm_profileuuid", Command_ProfileUUID, ADMFLAG_ROOT, "Profiles UUID generation components");
-    
-    // Print a message to the server console when the plugin loads
-    PrintToServer("[UUID Test] Plugin loaded successfully!");
-    
-    // Run a quick profiler test to make sure it's available
-    Profiler testProfiler = new Profiler();
-    if (testProfiler != null)
-    {
-        PrintToServer("[UUID Test] Profiler is available and working!");
-        delete testProfiler;
-    }
-    else
-    {
-        PrintToServer("[UUID Test] Warning: Profiler is not available (Windows only feature)");
-    }
 }
 
-/**
- * Command to test all UUID functionality
- */
 public Action Command_TestUUID(int client, int args)
 {
     // Generate a UUID
@@ -87,9 +68,6 @@ public Action Command_TestUUID(int client, int args)
     return Plugin_Handled;
 }
 
-/**
- * Command to generate and print a single UUID
- */
 public Action Command_GetUUID(int client, int args)
 {
     char uuid[37];
@@ -99,9 +77,6 @@ public Action Command_GetUUID(int client, int args)
     return Plugin_Handled;
 }
 
-/**
- * Command to validate a UUID provided as an argument
- */
 public Action Command_ValidateUUID(int client, int args)
 {
     if (args < 1)
@@ -145,9 +120,6 @@ public Action Command_ValidateUUID(int client, int args)
     return Plugin_Handled;
 }
 
-/**
- * Command to benchmark UUID generation
- */
 public Action Command_BenchmarkUUID(int client, int args)
 {
     // Default count
@@ -250,9 +222,6 @@ public Action Command_BenchmarkUUID(int client, int args)
     return Plugin_Handled;
 }
 
-/**
- * Command to profile individual UUID components
- */
 public Action Command_ProfileUUID(int client, int args)
 {
     ReplyToCommand(client, "[UUID Test] Starting detailed UUID generation profiling...");
